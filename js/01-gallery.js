@@ -5,11 +5,13 @@ let instance;
 
 images.addEventListener("click", (e) => {
   e.preventDefault();
-  const src = e.target.dataset.source;
-  const alt = e.target.alt;
-
-  instance = basicLightbox.create(`<img src=${src} alt=${alt} />`);
-  instance.show();
+  if (e.target.nodeName === "IMG") {
+    const src = e.target.dataset.source;
+    const alt = e.target.alt;
+  
+    instance = basicLightbox.create(`<img src=${src} alt=${alt} />`);
+    instance.show();
+  }
 });
 
 document.addEventListener("keydown", (e) => {
